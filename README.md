@@ -32,5 +32,12 @@ Mostly Entity Framework!
 ## Dependancies
 
 ## Installation & Setup
-
+To run set up the project:
+``` shell
+$ git clone https://github.com/liwoo/payme.git
+$ cd payme
+$ dotnet restore
+$ cd src/Api 
+$ dotnet run # start the api
+```
 ## Contributing

@@ -4,6 +4,6 @@ namespace Core.Entities
     {
         public int ID { get; set; }
         public string Phone { get; set; }
-        public string Message { get; set }
+        public string Message { get; set; }
     }
 }
