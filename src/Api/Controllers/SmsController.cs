@@ -23,7 +23,12 @@ namespace Api.Controllers
         {
             return new List<SMS>
             {
-                new SMS("08123321", "Hey there!"),
+                new SMS()
+                    {
+                        ID = 1,
+                        Phone = "0888123456",
+                        Message = "Some Message"
+                    }
             };
         }
 
