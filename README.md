@@ -1,4 +1,4 @@
-# PayMe
+# **PayMe**
 
 PayMe is a Poor Malawian Man's Solution to a Mobile Money Payment Solution. Basically, it receives forwarded messages from dedicated phone(s) and processes the SMSs to extract relevant Payment Notification details.
 

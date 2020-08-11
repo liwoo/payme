@@ -2,8 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Application.SMS.Commands;
+using Application.SMS.DTOs;
 using Core.Entities;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 //using Api.Models;
 
 namespace Api.Controllers
@@ -13,8 +17,12 @@ namespace Api.Controllers
     [ApiController]
     public class SmsController : ControllerBase
     {
-        public SmsController()
+        private readonly ILogger logger;
+        private readonly IMediator mediator;
+        public SmsController(ILogger<SmsController> logger, IMediator mediator)
         {
+            this.logger = logger;
+            this.mediator = mediator;
         }
 
         // GET api/sms
@@ -25,7 +33,7 @@ namespace Api.Controllers
             {
                 new SMS()
                     {
-                        ID = 1,
+                        Id = 1,
                         Phone = "0888123456",
                         Message = "Some Message"
                     }
@@ -41,9 +49,9 @@ namespace Api.Controllers
 
         // POST api/sms
         [HttpPost("")]
-        public void PostSMS(SMS value)
+        async public Task<string> PostSMS(SMSBodyDto body)
         {
-            throw new NotImplementedException();
+            return await this.mediator.Send(new ProcessSMS(body));
         }
 
     }

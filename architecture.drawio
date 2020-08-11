@@ -1,10 +1,10 @@
-<mxfile host="0ce8890b-af7d-4d3a-a350-0051ded89ae0" modified="2020-08-05T19:43:07.804Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.47.0 Chrome/78.0.3904.130 Electron/7.3.2 Safari/537.36" etag="x_j9HH3rdPxJgWuzju6S" version="13.1.3">
+<mxfile host="482f0acb-a0d0-4555-a4b3-2d935e15bcac" modified="2020-08-10T19:01:25.759Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.47.0 Chrome/78.0.3904.130 Electron/7.3.2 Safari/537.36" etag="EqpCbIyoOzAqxznTEcUo" version="13.1.3" pages="2">
     <diagram id="6hGFLwfOUW9BJ-s0fimq" name="Overview">
-        <mxGraphModel dx="674" dy="531" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="624" dy="531" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
-                <mxCell id="7" value="Process Payment Message" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.087;exitY=0.997;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="2" target="6">
+                <mxCell id="7" value="Process Payment Message" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.087;exitY=0.997;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="2" target="6" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="290" y="170" as="sourcePoint"/>
                         <Array as="points">
@@ -12,48 +12,48 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="2" target="22">
+                <mxCell id="23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="2" target="22" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="24" value="Claim Album" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="23">
+                <mxCell id="24" value="Claim Album" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="23" vertex="1" connectable="0">
                     <mxGeometry x="-0.3744" y="-1" relative="1" as="geometry">
                         <mxPoint as="offset"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="2" value="PayMeController" style="whiteSpace=wrap;html=1;fillColor=#76608a;strokeColor=#432D57;fontColor=#ffffff;" vertex="1" parent="1">
+                <mxCell id="2" value="PayMeController" style="whiteSpace=wrap;html=1;fillColor=#76608a;strokeColor=#432D57;fontColor=#ffffff;" parent="1" vertex="1">
                     <mxGeometry x="260" y="100" width="210" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="3" target="2">
+                <mxCell id="4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="3" target="2" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="5" value="Mpamba/AM Receipt" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="4">
+                <mxCell id="5" value="Mpamba/AM Receipt" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="4" vertex="1" connectable="0">
                     <mxGeometry x="-0.46" relative="1" as="geometry">
                         <mxPoint x="40" as="offset"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="3" value="&lt;br&gt;SMS&lt;br&gt;App" style="html=1;aspect=fixed;strokeColor=none;shadow=0;align=center;verticalAlign=top;fillColor=#3B8DF1;shape=mxgraph.gcp2.phone_android" vertex="1" parent="1">
+                <mxCell id="3" value="&lt;br&gt;SMS&lt;br&gt;App" style="html=1;aspect=fixed;strokeColor=none;shadow=0;align=center;verticalAlign=top;fillColor=#3B8DF1;shape=mxgraph.gcp2.phone_android" parent="1" vertex="1">
                     <mxGeometry x="40" y="80" width="56" height="100" as="geometry"/>
                 </mxCell>
-                <mxCell id="18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="6" target="17">
+                <mxCell id="18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="6" target="17" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="19" value="PaymentRecord" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="18">
+                <mxCell id="19" value="PaymentRecord" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="18" vertex="1" connectable="0">
                     <mxGeometry x="-0.2352" relative="1" as="geometry">
                         <mxPoint as="offset"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="6" value="PaymentMessageProcessor" style="whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="1">
+                <mxCell id="6" value="PaymentMessageProcessor" style="whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" parent="1" vertex="1">
                     <mxGeometry x="210" y="220" width="160" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.403;entryY=0.999;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="8" target="10">
+                <mxCell id="11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.403;entryY=0.999;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="8" target="10" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="12" value="Pay Liwu 5000" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="11">
+                <mxCell id="12" value="Pay Liwu 5000" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="11" vertex="1" connectable="0">
                     <mxGeometry x="-0.0292" y="3" relative="1" as="geometry">
                         <mxPoint as="offset"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="8" target="2">
+                <mxCell id="20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="8" target="2" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
                             <mxPoint x="570" y="450"/>
@@ -61,23 +61,23 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="21" value="Claim Album&lt;br&gt;with Transaction" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="20">
+                <mxCell id="21" value="Claim Album&lt;br&gt;with Transaction" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="20" vertex="1" connectable="0">
                     <mxGeometry x="0.499" y="1" relative="1" as="geometry">
                         <mxPoint as="offset"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="8" value="&lt;br&gt;MyFan" style="html=1;aspect=fixed;strokeColor=none;shadow=0;align=center;verticalAlign=top;fillColor=#3B8DF1;shape=mxgraph.gcp2.phone_android" vertex="1" parent="1">
+                <mxCell id="8" value="&lt;br&gt;MyFan" style="html=1;aspect=fixed;strokeColor=none;shadow=0;align=center;verticalAlign=top;fillColor=#3B8DF1;shape=mxgraph.gcp2.phone_android" parent="1" vertex="1">
                     <mxGeometry x="40" y="400" width="56" height="100" as="geometry"/>
                 </mxCell>
-                <mxCell id="13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.72;entryY=0.969;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="10" target="3">
+                <mxCell id="13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.72;entryY=0.969;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="10" target="3" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="16" value="Payment&lt;br&gt;Notification" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="13">
+                <mxCell id="16" value="Payment&lt;br&gt;Notification" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="13" vertex="1" connectable="0">
                     <mxGeometry x="-0.0336" y="-1" relative="1" as="geometry">
                         <mxPoint x="-1" y="1" as="offset"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="10">
+                <mxCell id="14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;" parent="1" source="10" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="96" y="430" as="targetPoint"/>
                         <Array as="points">
@@ -87,32 +87,32 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="15" value="Payment&lt;br&gt;Receipt" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="14">
+                <mxCell id="15" value="Payment&lt;br&gt;Receipt" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="14" vertex="1" connectable="0">
                     <mxGeometry x="-0.2735" y="2" relative="1" as="geometry">
                         <mxPoint as="offset"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="10" value="Mpamba" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                <mxCell id="10" value="Mpamba" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="20" y="260" width="120" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="17" value="" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.database;whiteSpace=wrap;fillColor=#1ba1e2;strokeColor=#006EAF;fontColor=#ffffff;" vertex="1" parent="1">
+                <mxCell id="17" value="" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.database;whiteSpace=wrap;fillColor=#1ba1e2;strokeColor=#006EAF;fontColor=#ffffff;" parent="1" vertex="1">
                     <mxGeometry x="335" y="340" width="60" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="22" target="17">
+                <mxCell id="25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="22" target="17" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="27" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="22" target="26">
+                <mxCell id="27" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="22" target="26" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="28" value="Release Album" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="27">
+                <mxCell id="28" value="Release Album" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="27" vertex="1" connectable="0">
                     <mxGeometry x="-0.4299" y="1" relative="1" as="geometry">
                         <mxPoint x="9" as="offset"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="22" value="AlbumClaimValidator" style="whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="1">
+                <mxCell id="22" value="AlbumClaimValidator" style="whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" parent="1" vertex="1">
                     <mxGeometry x="380" y="220" width="120" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="29" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.577;entryY=1.018;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="26" target="8">
+                <mxCell id="29" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.577;entryY=1.018;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="26" target="8" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
                             <mxPoint x="500" y="530"/>
@@ -120,13 +120,69 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="30" value="Email with Album in Attachment" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="29">
+                <mxCell id="30" value="Email with Album in Attachment" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="29" vertex="1" connectable="0">
                     <mxGeometry x="0.2541" y="-2" relative="1" as="geometry">
                         <mxPoint as="offset"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="26" value="Mailor" style="whiteSpace=wrap;html=1;fillColor=#008a00;strokeColor=#005700;fontColor=#ffffff;" vertex="1" parent="1">
+                <mxCell id="26" value="Mailor" style="whiteSpace=wrap;html=1;fillColor=#008a00;strokeColor=#005700;fontColor=#ffffff;" parent="1" vertex="1">
                     <mxGeometry x="460" y="330" width="80" height="60" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+    <diagram id="WUsLaUwIkepgnX39U3gD" name="Mediator">
+        <mxGraphModel dx="1040" dy="885" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="N0UknE3Dih1A0OrLGlwD-0"/>
+                <mxCell id="N0UknE3Dih1A0OrLGlwD-1" parent="N0UknE3Dih1A0OrLGlwD-0"/>
+                <mxCell id="N0UknE3Dih1A0OrLGlwD-7" value="" style="whiteSpace=wrap;html=1;fillColor=#76608a;strokeColor=#432D57;fontColor=#ffffff;" vertex="1" parent="N0UknE3Dih1A0OrLGlwD-1">
+                    <mxGeometry x="30" y="380" width="780" height="270" as="geometry"/>
+                </mxCell>
+                <mxCell id="N0UknE3Dih1A0OrLGlwD-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="N0UknE3Dih1A0OrLGlwD-1" source="N0UknE3Dih1A0OrLGlwD-2" target="N0UknE3Dih1A0OrLGlwD-5">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="N0UknE3Dih1A0OrLGlwD-2" value="MediatR" style="whiteSpace=wrap;html=1;" vertex="1" parent="N0UknE3Dih1A0OrLGlwD-1">
+                    <mxGeometry x="353" y="280" width="145" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="N0UknE3Dih1A0OrLGlwD-3" value="Payment" style="whiteSpace=wrap;html=1;" vertex="1" parent="N0UknE3Dih1A0OrLGlwD-1">
+                    <mxGeometry x="140" y="430" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="N0UknE3Dih1A0OrLGlwD-4" value="SMS" style="whiteSpace=wrap;html=1;" vertex="1" parent="N0UknE3Dih1A0OrLGlwD-1">
+                    <mxGeometry x="570" y="430" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="N0UknE3Dih1A0OrLGlwD-5" value="ProcessMessage" style="whiteSpace=wrap;html=1;" vertex="1" parent="N0UknE3Dih1A0OrLGlwD-1">
+                    <mxGeometry x="640" y="530" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="N0UknE3Dih1A0OrLGlwD-6" value="FetchAllMessages" style="whiteSpace=wrap;html=1;" vertex="1" parent="N0UknE3Dih1A0OrLGlwD-1">
+                    <mxGeometry x="490" y="530" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="N0UknE3Dih1A0OrLGlwD-8" value="ProcessPayments" style="whiteSpace=wrap;html=1;" vertex="1" parent="N0UknE3Dih1A0OrLGlwD-1">
+                    <mxGeometry x="70" y="530" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="N0UknE3Dih1A0OrLGlwD-10" value="Send(new ProcessMessage(SMSBody))" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="N0UknE3Dih1A0OrLGlwD-1" source="N0UknE3Dih1A0OrLGlwD-9" target="N0UknE3Dih1A0OrLGlwD-2">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="N0UknE3Dih1A0OrLGlwD-9" value="Presentation" style="whiteSpace=wrap;html=1;" vertex="1" parent="N0UknE3Dih1A0OrLGlwD-1">
+                    <mxGeometry x="365" y="100" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="N0UknE3Dih1A0OrLGlwD-13" value="" style="whiteSpace=wrap;html=1;fillColor=#6d8764;strokeColor=#3A5431;fontColor=#ffffff;" vertex="1" parent="N0UknE3Dih1A0OrLGlwD-1">
+                    <mxGeometry x="30" y="700" width="780" height="190" as="geometry"/>
+                </mxCell>
+                <mxCell id="N0UknE3Dih1A0OrLGlwD-14" value="SMS" style="whiteSpace=wrap;html=1;" vertex="1" parent="N0UknE3Dih1A0OrLGlwD-1">
+                    <mxGeometry x="570" y="740" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="N0UknE3Dih1A0OrLGlwD-15" value="SMSService" style="whiteSpace=wrap;html=1;" vertex="1" parent="N0UknE3Dih1A0OrLGlwD-1">
+                    <mxGeometry x="570" y="820" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="N0UknE3Dih1A0OrLGlwD-16" value="MpambaService" style="whiteSpace=wrap;html=1;" vertex="1" parent="N0UknE3Dih1A0OrLGlwD-1">
+                    <mxGeometry x="60" y="820" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="N0UknE3Dih1A0OrLGlwD-17" value="Payment" style="whiteSpace=wrap;html=1;" vertex="1" parent="N0UknE3Dih1A0OrLGlwD-1">
+                    <mxGeometry x="140" y="740" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="N0UknE3Dih1A0OrLGlwD-18" value="AirtelMoney" style="whiteSpace=wrap;html=1;" vertex="1" parent="N0UknE3Dih1A0OrLGlwD-1">
+                    <mxGeometry x="190" y="820" width="120" height="60" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
