@@ -35,7 +35,7 @@ namespace Application.SMS.Commands
             ));
 
             // TODO: Return SavedSMS
-            return Task.FromResult("Hey, it works, well");
+            return Task.FromResult("SMS Saved");
         }
     }
 }
