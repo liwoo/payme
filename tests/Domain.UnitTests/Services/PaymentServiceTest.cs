@@ -1,4 +1,5 @@
 using System;
+using Core.Entities;
 using Core.Services;
 using FluentAssertions;
 using Xunit;
@@ -81,11 +82,11 @@ namespace Domain.UnitTests.Services
             payment.Amount.Should().Be(840);
             payment.Reference.Should().Be("7F257T6NHD");
             payment.FromAgent.Should().BeFalse();
-            payment.FromBank.Should().BeFalse();
             payment.Amount.Should().BeOfType(typeof(Decimal));
         }
+
         [Fact]
-        public void PaymentService_ShouldGenerateMpambaPaymentFromBank()
+        public void PaymentService_ShouldShowWhichBankTransactionIsFrom()
         {
             var phoneNumber = "+265888123321";
             var textMessage = @"
@@ -94,11 +95,7 @@ namespace Domain.UnitTests.Services
 
             Payment payment = _service.GenerateFromMpamba(phoneNumber, textMessage);
 
-            payment.Amount.Should().Be(3500);
-            payment.Reference.Should().Be("7FK48241IQ");
-            payment.FromAgent.Should().BeFalse();
-            payment.FromBank.Should().BeTrue();
-            payment.Amount.Should().BeOfType(typeof(Decimal));
+            payment.BankName.Should().Be(Bank.Standard);
         }
     }
 }

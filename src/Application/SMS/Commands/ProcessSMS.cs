@@ -18,16 +18,16 @@ namespace Application.SMS.Commands
     }
     public class ProcessSMSHandler : IRequestHandler<ProcessSMS, string>
     {
-        private readonly IMediator mediator;
+        private readonly IMediator _mediator;
         public ProcessSMSHandler(IMediator mediator)
         {
-            this.mediator = mediator;
+            _mediator = mediator;
         }
 
         public Task<string> Handle(ProcessSMS request, CancellationToken cancellationToken)
         {
             // TODO: Save SMS to DB
-            mediator.Publish(new SMSReceived(new SMSContents
+            _mediator.Publish(new SMSReceived(new SMSContents
             {
                 Phone = request.smsBody.Phone,
                 Contents = request.smsBody.Text

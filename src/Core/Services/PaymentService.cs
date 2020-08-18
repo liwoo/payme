@@ -1,5 +1,7 @@
 using System.Text.RegularExpressions;
 using System;
+using Core.Entities;
+
 namespace Core.Services
 {
     public class PaymentService
@@ -9,31 +11,32 @@ namespace Core.Services
             //Look for any text between Amt and MWK
             var amountRegex = new Regex("((?<=(Amount: )|(Amt: ))(.*?)(?=M))|((?<=(recieved ))(.*?)(?=M))");
             var referenceRegex = new Regex(@"(?<=Ref: )(.*?)(?=\s)");
-            var fromBankRegex = new Regex("(Deposit from)");
+            var bankNameRegex = new Regex("(?<=from )(.*?)(?= on)");
             var fromAgentRegex = new Regex("(Cash In)");
             var amount = Decimal.Parse(amountRegex.Match(content).ToString().Trim());
             var reference = referenceRegex.Match(content).ToString();
             var fromAgent = fromAgentRegex.IsMatch(content);
-            var fromBank = fromBankRegex.IsMatch(content);
+            var BankName = bankNameRegex.Match(content).ToString();
+
 
             return new Payment()
             {
                 Amount = amount,
                 PhoneNumber = number,
                 FromAgent = fromAgent,
-                FromBank = fromBank,
-                Reference = reference
+                Reference = reference,
+                BankName = this.GetBankNameFromString(BankName)
+            };
+        }
+
+        private Bank GetBankNameFromString(String bankName)
+        {
+            return bankName switch
+            {
+                "STANDARD BANK" => Bank.Standard,
+                _ => Bank.None
             };
         }
         //TODO public Payment GenerateFromAirtelMonet(string number, string content)
-    }
-
-    public class Payment
-    {
-        public Decimal Amount { get; set; }
-        public string PhoneNumber { get; set; }
-        public string Reference { get; set; }
-        public bool FromAgent { get; set; }
-        public bool FromBank { get; set; }
     }
 }

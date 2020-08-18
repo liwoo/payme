@@ -1,10 +1,19 @@
+using System;
+
 namespace Core.Entities
 {
     public class Payment
     {
-        public int Id { get; set; }
-        public string Phone { get; set; }
-        public decimal Amount { get; set; }
-        public string ReferenceNumber { get; set; }
+        public Decimal Amount { get; set; }
+        public string PhoneNumber { get; set; }
+        public string Reference { get; set; }
+        public bool FromAgent { get; set; }
+        public Bank BankName { get; set; }
+    }
+    public enum Bank
+    {
+        None,
+        Standard,
+        National
     }
 }
