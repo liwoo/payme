@@ -1,4 +1,5 @@
 using System;
+using Core.Services;
 
 namespace Core.Entities
 {
@@ -9,7 +10,9 @@ namespace Core.Entities
         public string Reference { get; set; }
         public bool FromAgent { get; set; }
         public Bank BankName { get; set; }
+        public Provider ProviderName { get; set; }
     }
+
     public enum Bank
     {
         None,

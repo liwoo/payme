@@ -8,12 +8,9 @@ namespace Domain.UnitTests.Services
 {
     public class PaymentServiceTest
     {
-        private readonly PaymentService _service;
 
-        public PaymentServiceTest()
-        {
-            _service = new PaymentService();
-        }
+        private MpambaService GetService(string phoneNumber, string textMessage) 
+            => new MpambaService(textMessage, phoneNumber);
 
         [Fact]
         public void PaymentService_ShouldWork()
@@ -36,7 +33,7 @@ namespace Domain.UnitTests.Services
             ";
 
             //When or Act
-            Payment payment = _service.GenerateFromMpamba(phoneNumber, textMessage);
+            Payment payment = GetService(phoneNumber, textMessage).GeneratePayment();
 
             //Then or Assert
             payment.Amount.Should().Be(5500);
@@ -57,7 +54,7 @@ namespace Domain.UnitTests.Services
             Bal: 6,002.00MWK
             ";
 
-            Payment payment = _service.GenerateFromMpamba(phoneNumber, textMessage);
+            Payment payment = GetService(phoneNumber, textMessage).GeneratePayment();
 
             payment.Amount.Should().Be(6000);
             payment.Reference.Should().Be("6EQ63HN6KW");
@@ -77,7 +74,7 @@ namespace Domain.UnitTests.Services
             Balance: 840.01MWK
             ";
 
-            Payment payment = _service.GenerateFromMpamba(phoneNumber, textMessage);
+            Payment payment = GetService(phoneNumber, textMessage).GeneratePayment();
 
             payment.Amount.Should().Be(840);
             payment.Reference.Should().Be("7F257T6NHD");
@@ -93,7 +90,7 @@ namespace Domain.UnitTests.Services
             Deposit from STANDARD BANK on 20/06/2020 18:11:10. Amount: 3,500.00MWK Fee: 0.00MWK Ref: 7FK48241IQ Available Balance: 3,500.01MWK.
             ";
 
-            Payment payment = _service.GenerateFromMpamba(phoneNumber, textMessage);
+            Payment payment = GetService(phoneNumber, textMessage).GeneratePayment();
 
             payment.BankName.Should().Be(Bank.Standard);
         }
