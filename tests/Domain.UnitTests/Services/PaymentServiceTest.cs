@@ -63,5 +63,40 @@ namespace Domain.UnitTests.Services
             payment.FromAgent.Should().BeFalse();
             payment.Amount.Should().BeOfType(typeof(Decimal));
         }
+
+        [Fact]
+        public void PaymentService_ShouldGenerateMpambaPaymentFromAirtelMoney()
+        {
+            var phoneNumber = "+265888123321";
+            var textMessage = @"
+            You have recieved 840.00MWK
+            from AIRTEL MONEY
+            on 02/06/2020 20:16:04. 
+            Ref: 7F257T6NHD
+            Balance: 840.01MWK
+            ";
+
+            Payment payment = _service.GenerateFromMpamba(phoneNumber, textMessage);
+
+            payment.Amount.Should().Be(840);
+            payment.Reference.Should().Be("7F257T6NHD");
+            payment.FromAgent.Should().BeFalse();
+            payment.Amount.Should().BeOfType(typeof(Decimal));
+        }
+        [Fact]
+        public void PaymentService_ShouldGenerateMpambaPaymentFromBank()
+        {
+            var phoneNumber = "";
+            var textMessage = @"
+            Deposit from STANDARD BANK on 20/06/2020 18:11:10. Amount: 3,500.00MWK Fee: 0.00MWK Ref: 7FK48241IQ Available Balance: 3,500.01MWK.
+            ";
+
+            Payment payment = _service.GenerateFromMpamba(phoneNumber, textMessage);
+
+            payment.Amount.Should().Be(3500);
+            payment.Reference.Should().Be("7FK48241IQ");
+            payment.FromAgent.Should().BeFalse();
+            payment.Amount.Should().BeOfType(typeof(Decimal));
+        }
     }
 }
