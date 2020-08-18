@@ -87,7 +87,7 @@ namespace Domain.UnitTests.Services
         [Fact]
         public void PaymentService_ShouldGenerateMpambaPaymentFromBank()
         {
-            var phoneNumber = "";
+            var phoneNumber = "+265888123321";
             var textMessage = @"
             Deposit from STANDARD BANK on 20/06/2020 18:11:10. Amount: 3,500.00MWK Fee: 0.00MWK Ref: 7FK48241IQ Available Balance: 3,500.01MWK.
             ";

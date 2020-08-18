@@ -7,13 +7,14 @@ namespace Core.Services
         public Payment GenerateFromMpamba(string number, string content)
         {
             //Look for any text between Amt and MWK
-            var amountRegex = new Regex("((?<=(Amount: )|(Amt: ))(.*)(?=M))|((?<=(recieved ))(.*)(?=M))");
-            var referenceRegex = new Regex("(?<=Ref: )(.*)(?=)");
+            var amountRegex = new Regex("((?<=(Amount: )|(Amt: ))(.*?)(?=M))|((?<=(recieved ))(.*?)(?=M))");
+            var referenceRegex = new Regex(@"(?<=Ref: )(.*?)(?=\s)");
+            var fromBankRegex = new Regex("(Deposit from)");
             var fromAgentRegex = new Regex("(Cash In)");
-            var amount = Decimal.Parse(amountRegex.Match(content).ToString());
+            var amount = Decimal.Parse(amountRegex.Match(content).ToString().Trim());
             var reference = referenceRegex.Match(content).ToString();
             var fromAgent = fromAgentRegex.IsMatch(content);
-            var fromBank = Regex.IsMatch("(Deposit from)", content);
+            var fromBank = fromBankRegex.IsMatch(content);
 
             return new Payment()
             {
