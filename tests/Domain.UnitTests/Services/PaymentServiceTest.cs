@@ -43,5 +43,25 @@ namespace Domain.UnitTests.Services
             payment.FromAgent.Should().BeTrue();
             payment.Amount.Should().BeOfType(typeof(Decimal));
         }
+
+        [Fact]
+        public void PaymentService_ShouldGenerateMpambaPaymentFromUser()
+        {
+            var phoneNumber = "+265888123321";
+            var textMessage = @"
+            Money Received from 265880000000 firstname lastname on 
+            26/05/2019 14:29:36. 
+            Amount: 6,000.00MWK 
+            Ref: 6EQ63HN6KW
+            Bal: 6,002.00MWK
+            ";
+
+            Payment payment = _service.GenerateFromMpamba(phoneNumber, textMessage);
+
+            payment.Amount.Should().Be(6000);
+            payment.Reference.Should().Be("6EQ63HN6KW");
+            payment.FromAgent.Should().BeFalse();
+            payment.Amount.Should().BeOfType(typeof(Decimal));
+        }
     }
 }
