@@ -81,6 +81,7 @@ namespace Domain.UnitTests.Services
             payment.Amount.Should().Be(840);
             payment.Reference.Should().Be("7F257T6NHD");
             payment.FromAgent.Should().BeFalse();
+            payment.FromBank.Should().BeFalse();
             payment.Amount.Should().BeOfType(typeof(Decimal));
         }
         [Fact]
@@ -96,6 +97,7 @@ namespace Domain.UnitTests.Services
             payment.Amount.Should().Be(3500);
             payment.Reference.Should().Be("7FK48241IQ");
             payment.FromAgent.Should().BeFalse();
+            payment.FromBank.Should().BeTrue();
             payment.Amount.Should().BeOfType(typeof(Decimal));
         }
     }
