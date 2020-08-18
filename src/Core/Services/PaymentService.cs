@@ -18,6 +18,12 @@ namespace Core.Services
             var fromAgent = fromAgentRegex.IsMatch(content);
             var BankName = bankNameRegex.Match(content).ToString();
 
+            //TODO: public GetServiceProviderFromPhoneNumber()
+            // enum Service Proiveders
+            //
+            //TODO: public IsValidRefernce()
+            //TODO: public IsDeposit()
+            //throw  InvalidReferenceException Core > Exceptions > 
 
             return new Payment()
             {
@@ -37,6 +43,5 @@ namespace Core.Services
                 _ => Bank.None
             };
         }
-        //TODO public Payment GenerateFromAirtelMonet(string number, string content)
     }
 }

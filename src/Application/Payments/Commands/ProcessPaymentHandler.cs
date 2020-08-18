@@ -9,8 +9,10 @@ namespace Application.Payments.Commands
     {
         public Task Handle(SMSReceived notification, CancellationToken cancellationToken)
         {
-            //Call our Payment Service to generate a Payment Object
-            //Persist our Payment Object into our Database (EFCore) .save()
+            //if Service Provider is TNM or Airtel then we have a potential Paymnent
+                // PaymentService.GenerateFromMpamba or AM
+                // catch an Error Here then Mail our Manager
+                // no error -> Persist our Payment Object into our Database (EFCore) .save()
             throw new System.NotImplementedException();
         }
     }
