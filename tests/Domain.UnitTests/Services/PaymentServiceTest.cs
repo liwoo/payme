@@ -9,13 +9,35 @@ namespace Domain.UnitTests.Services
     public class PaymentServiceTest
     {
 
-        private MpambaService GetService(string phoneNumber, string textMessage) 
+        private MpambaService GetService(string phoneNumber, string textMessage)
             => new MpambaService(textMessage, phoneNumber);
 
         [Fact]
         public void PaymentService_ShouldWork()
         {
             true.Should().BeTrue();
+        }
+
+        [Fact]
+        public void PaymentService_ShouldSanitizeMessage()
+        {
+            var phoneNumber = "+265888123321";
+            var textMessage = @"
+                Cash In from 263509-RODGERS LETALA on
+                09/08/2020 09:43:32.
+                Amt: 5,500.00MWK
+                Fee: 0.00MWK
+                Ref: 7H948UWUV8
+                Bal: 5,557.96MWK
+            ";
+
+            //TODO: Make this test pass
+            //TODO: Sanization Logic is in the IPaymentService interface
+            // var sanitizedMessage = @"CashInfrom263509-RODGERSLETALAon09/08/2020 09:43:32.Amt:5,500.00MWKFee0.00MWKRef:7H948UWUV8Bal:5,557.96MWK";
+
+            //When or Act
+            MpambaService mpambaService = GetService(phoneNumber, textMessage);
+            // mpambaService._message.Should().Be(sanitizedMessage);
         }
 
         [Fact]
@@ -80,6 +102,8 @@ namespace Domain.UnitTests.Services
             payment.Reference.Should().Be("7F257T6NHD");
             payment.FromAgent.Should().BeFalse();
             payment.Amount.Should().BeOfType(typeof(Decimal));
+            //TODO: payment.BankName.Should().Be(Bank.AirtelMoney);
+            //TODO: make that test pass
         }
 
         [Fact]

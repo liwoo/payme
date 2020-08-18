@@ -6,12 +6,12 @@ namespace Core.Services
 {
     public class MpambaService : IPaymentService
     {
-        private readonly string _message;
-        private readonly string _phoneNumber;
+        public readonly string _message;
+        public readonly string _phoneNumber;
 
         public MpambaService(string message, string phoneNumber)
         {
-            _message = message;
+            _message = IPaymentService.SanitizeMessage(message);
             _phoneNumber = phoneNumber;
         }
 
