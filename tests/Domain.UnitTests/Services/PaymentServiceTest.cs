@@ -30,7 +30,7 @@ namespace Domain.UnitTests.Services
                 Ref: 7H948UWUV8
                 Bal: 5,557.96MWK
             ";
-            
+
             var sanitizedMessage = @"Cash In from 263509-RODGERS LETALA on 09/08/2020 09:43:32. Amt: 5,500.00MWK Fee: 0.00MWK Ref: 7H948UWUV8 Bal: 5,557.96MWK";
 
             //When or Act
@@ -100,8 +100,7 @@ namespace Domain.UnitTests.Services
             payment.Reference.Should().Be("7F257T6NHD");
             payment.FromAgent.Should().BeFalse();
             payment.Amount.Should().BeOfType(typeof(Decimal));
-            //TODO: payment.BankName.Should().Be(Bank.AirtelMoney);
-            //TODO: make that test pass
+            payment.BankName.Should().Be(Bank.AirtelMoney);
         }
 
         [Fact]
