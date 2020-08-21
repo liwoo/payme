@@ -30,14 +30,12 @@ namespace Domain.UnitTests.Services
                 Ref: 7H948UWUV8
                 Bal: 5,557.96MWK
             ";
-
-            //TODO: Make this test pass
-            //TODO: Sanization Logic is in the IPaymentService interface
-            // var sanitizedMessage = @"CashInfrom263509-RODGERSLETALAon09/08/2020 09:43:32.Amt:5,500.00MWKFee0.00MWKRef:7H948UWUV8Bal:5,557.96MWK";
+            
+            var sanitizedMessage = @"Cash In from 263509-RODGERS LETALA on 09/08/2020 09:43:32. Amt: 5,500.00MWK Fee: 0.00MWK Ref: 7H948UWUV8 Bal: 5,557.96MWK";
 
             //When or Act
             MpambaService mpambaService = GetService(phoneNumber, textMessage);
-            // mpambaService._message.Should().Be(sanitizedMessage);
+            mpambaService._message.Should().Be(sanitizedMessage);
         }
 
         [Fact]

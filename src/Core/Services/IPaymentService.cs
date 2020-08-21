@@ -1,4 +1,5 @@
 using Core.Entities;
+using Core.Utils;
 
 namespace Core.Services
 {
@@ -11,7 +12,7 @@ namespace Core.Services
         static string SanitizeMessage(string message)
         {
             //TODO: sanitize message here
-            return message;
+            return TextUtils.RemoveWhitespace(message);
         }
 
         static Bank GetBankNameFromString(string bankName)
