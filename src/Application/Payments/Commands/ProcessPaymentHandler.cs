@@ -32,15 +32,22 @@ namespace Application.Payments.Commands
                 if (service.IsDeposit())
                 {
                     var payment = service.GeneratePayment();
+                    //check if ReferencePaymentExists
+                    //if it doesn't exist - we good!
+                    //if it exists
+                    //Ask service if IsSamePayment(old, current)
+                    //discard current one, i.e. do nothing
+                    //email manager to reconcile manually
                     //save!
                 }
-                
+
                 return Task.FromCanceled(cancellationToken);
 
             }
             catch (UnprocessablePayment e)
             {
                 //log this as an exception
+                //email manager
                 return Task.FromException(e);
             }
         }
