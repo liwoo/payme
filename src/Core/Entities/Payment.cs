@@ -21,6 +21,7 @@ namespace Core.Entities
         Standard,
         AirtelMoney,
         Mpamba,
+        Missing,
         National
     }
 }

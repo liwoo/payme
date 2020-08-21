@@ -3,7 +3,7 @@ using Core.Utils;
 
 namespace Core.Services
 {
-    interface IPaymentService
+    public interface IPaymentService
     {
         bool IsDeposit();
         bool HasInvalidReference();
