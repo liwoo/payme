@@ -126,6 +126,7 @@ namespace Domain.UnitTests.Services
 
             payment.Amount.Should().Be(68750);
             payment.Reference.Should().Be("ER200605.1800.H19376");
+            payment.FromAgent.Should().Be(true);
         }
         [Fact]
         public void PaymentService_ShouldGenerateAirtelMoneyPaymentFromUser()
