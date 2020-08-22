@@ -31,7 +31,7 @@ namespace Domain.UnitTests.Services
                 Bal: 5,557.96MWK
             ";
 
-            var sanitizedMessage = @"Cash In from 263509-RODGERS LETALA on 09/08/2020 09:43:32. Amt: 5,500.00MWK Fee: 0.00MWK Ref: 7H948UWUV8 Bal: 5,557.96MWK";
+            var sanitizedMessage = @"CashInfrom263509-RODGERSLETALAon09/08/202009:43:32.Amt:5,500.00MWKFee:0.00MWKRef:7H948UWUV8Bal:5,557.96MWK";
 
             //When or Act
             MpambaService mpambaService = GetService(phoneNumber, textMessage);
@@ -115,18 +115,73 @@ namespace Domain.UnitTests.Services
 
             payment.BankName.Should().Be(Bank.Standard);
         }
+        [Fact]
+        public void PaymentService_ShouldGenerateAirtelMoneyPaymentFromAgent()
+        {
+            var phoneNumber = "+265999123321";
+            var textMessage = @"Txn Id:ER200605.1800.H19376. Dear Customer, you have recieved MK 68750.00 from  . Your available balance is  MK68852.69.";
 
-        public void PaymentService_ShouldGenerateAirtelMoneyPaymentFromAgent() {
+            AirtelMoneyService service = new AirtelMoneyService(textMessage, phoneNumber);
+            Payment payment = service.GeneratePayment();
 
+            payment.Amount.Should().Be(68750);
+            payment.Reference.Should().Be("ER200605.1800.H19376");
         }
-        public void PaymentService_ShouldGenerateAirtelMoneyPaymentFromUser() {
+        [Fact]
+        public void PaymentService_ShouldGenerateAirtelMoneyPaymentFromUser()
+        {
             var phoneNumber = "+265999123321";
             var textMessage = @"Trans.ID :  PP200602.1133.H23975. Dear customer, you have received MK 3000.00 from 990000000,FIRSTNAME LASTNAME . Your available balance is MK 4022.69.";
-        }
 
-        public void PaymentService_ShouldGenerateAirtelMoneyPaymentFromBank() {
+            AirtelMoneyService service = new AirtelMoneyService(textMessage, phoneNumber);
+            Payment payment = service.GeneratePayment();
+
+            payment.Amount.Should().Be(3000);
+            payment.Reference.Should().Be("PP200602.1133.H23975");
+        }
+        [Fact]
+        public void PaymentService_ShouldGenerateAirtelMoneyPaymentFromBank()
+        {
             var phoneNumber = "+265888123321";
             var textMessage = @"Trans. ID: BW200602.1151.D34302 You have received MK 5000.00 from Bank Account. Your available balance is 9022.69MK.";
+
+            AirtelMoneyService service = new AirtelMoneyService(textMessage, phoneNumber);
+            Payment payment = service.GeneratePayment();
+
+            payment.Amount.Should().Be(5000);
+            payment.Reference.Should().Be("BW200602.1151.D34302");
+            payment.BankName.Should().Be(Bank.Missing);
+        }
+
+        [Fact]
+        public void PaymentService_ShouldBeValidTransactionAirtel()
+        {
+            var phoneNumber = "+265888123321";
+            var textMessage = @"Trans. ID: BW200602.1151.D34302 You have received MK 5000.00 from Bank Account. Your available balance is 9022.69MK.";
+
+            AirtelMoneyService service = new AirtelMoneyService(textMessage, phoneNumber);
+
+            service.HasInvalidReference().Should().Be(true);
+            service.IsDeposit().Should().Be(true);
+        }
+
+        [Fact]
+        public void PaymentService_ShouldBeValidTransactionMpamba()
+        {
+            var phoneNumber = "+265888123321";
+            var textMessage = @"
+                Cash In from 263509-RODGERS LETALA on
+                09/08/2020 09:43:32.
+                Amt: 5,500.00MWK
+                Fee: 0.00MWK
+                Ref: 7H948UWUV8
+                Bal: 5,557.96MWK
+            ";
+
+            MpambaService service = GetService(phoneNumber, textMessage);
+
+            service.HasInvalidReference().Should().Be(true);
+            service.IsDeposit().Should().Be(true);
         }
     }
 }

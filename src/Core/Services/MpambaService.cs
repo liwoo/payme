@@ -17,10 +17,10 @@ namespace Core.Services
 
         public Payment GeneratePayment()
         {
-            var amountRegex = new Regex("((?<=(Amount: )|(Amt: ))(.*?)(?=M))|((?<=(recieved ))(.*?)(?=M))");
-            var referenceRegex = new Regex(@"(?<=Ref: )(.*?)(?=\s)");
-            var bankNameRegex = new Regex("(?<=from )(.*?)(?= on)");
-            var fromAgentRegex = new Regex("(Cash In)");
+            var amountRegex = new Regex("((?<=(Amount:)|(Amt:))(.*?)(?=M))|((?<=(recieved))(.*?)(?=M))");
+            var referenceRegex = new Regex(@"(?<=Ref:)(.*?)(?=((Bal)|(Avai)))");
+            var bankNameRegex = new Regex("(?<=from)(.*?)(?=on)");
+            var fromAgentRegex = new Regex("(CashIn)");
             var amount = Decimal.Parse(amountRegex.Match(_message).ToString().Trim());
             var reference = referenceRegex.Match(_message).ToString();
             var fromAgent = fromAgentRegex.IsMatch(_message);
@@ -39,12 +39,13 @@ namespace Core.Services
 
         public bool HasInvalidReference()
         {
-            throw new System.NotImplementedException();
+            var reference = Regex.Match(_message,@"(?<=Ref:)(.*?)(?=((Bal)|(Avai)))").ToString().Trim();
+            return (reference.Length == 10);
         }
 
         public bool IsDeposit()
         {
-            throw new System.NotImplementedException();
+            return Regex.IsMatch(_message, @"((CashIn)|(Received)|(recieved)|(Deposit))");
         }
     }
 }

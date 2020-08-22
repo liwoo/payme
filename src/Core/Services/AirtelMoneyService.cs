@@ -16,17 +16,34 @@ namespace Core.Services
         }
         public Payment GeneratePayment()
         {
-            throw new NotImplementedException();
+            var amountRegex = new Regex(@"((?<=((receivedMK)|(recievedMK)))(.*?)(?=from))");
+            var referenceRegex = new Regex(@"(?<=(Id:)|(ID:))(.*?)(?=((\.De)|(Yo)))");
+            var bankNameRegex = new Regex(@"(?<=from)(.*?)(?=\.)");
+            var fromAgentRegex = new Regex("(Txn)");
+            var amount = Decimal.Parse(amountRegex.Match(_message).ToString().Trim());
+            var reference = referenceRegex.Match(_message).ToString();
+            var fromAgent = fromAgentRegex.IsMatch(_message);
+            var BankName = bankNameRegex.Match(_message).ToString();
+
+            return new Payment()
+            {
+                Amount = amount,
+                PhoneNumber = _phoneNumber,
+                FromAgent = fromAgent,
+                Reference = reference,
+                BankName = IPaymentService.GetBankNameFromString(BankName),
+                ProviderName = Provider.AirtelMoney
+            };
         }
 
         public bool HasInvalidReference()
         {
-            throw new NotImplementedException();
+            return Regex.IsMatch(_message,@"[(A-Z)|(A-Z)|(0-9)]{8}.[0-9]{4}.[(A-Z)|(A-Z)|(0-9)]{6}");
         }
 
         public bool IsDeposit()
         {
-            throw new NotImplementedException();
+            return Regex.IsMatch(_message, @"((recieved)|(received))");
         }
     }
 }

@@ -12,15 +12,16 @@ namespace Core.Services
         static string SanitizeMessage(string message)
         {
             //TODO: sanitize message here
-            return TextUtils.RemoveWhitespace(message);
+            return TextUtils.RemoveInPlaceCharArray(message);
         }
 
         static Bank GetBankNameFromString(string bankName)
         {
             return bankName switch
             {
-                "STANDARD BANK" => Bank.Standard,
-                "AIRTEL MONEY" => Bank.AirtelMoney,
+                "STANDARDBANK" => Bank.Standard,
+                "AIRTELMONEY" => Bank.AirtelMoney,
+                "BankAccount" => Bank.Missing,
                 _ => Bank.None
             };
         }
