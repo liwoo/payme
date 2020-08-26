@@ -1,8 +1,8 @@
 using System;
 
-namespace Core.Utils
+namespace Text
 {
-    static class TextUtils {
+    public static class TextUtils {
         /*
             This is used to remove all white spaces from text faster than using a REGEX
             code from:
