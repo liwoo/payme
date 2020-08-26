@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\Depends\Text\Text.csproj" />
+    <ProjectReference Include="..\Dependencies\Text\Text.csproj" />
   </ItemGroup>
 
   <PropertyGroup>
