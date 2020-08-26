@@ -18,34 +18,39 @@ namespace Core.Services
         public Payment GeneratePayment()
         {
             var amountRegex = new Regex("((?<=(Amount:)|(Amt:))(.*?)(?=M))|((?<=(recieved))(.*?)(?=M))");
-            var referenceRegex = new Regex(@"(?<=Ref:)(.*?)(?=((Bal)|(Avai)))");
-            var bankNameRegex = new Regex("(?<=from)(.*?)(?=on)");
-            var fromAgentRegex = new Regex("(CashIn)");
             var amount = Decimal.Parse(amountRegex.Match(_message).ToString().Trim());
-            var reference = referenceRegex.Match(_message).ToString();
-            var fromAgent = fromAgentRegex.IsMatch(_message);
-            var BankName = bankNameRegex.Match(_message).ToString();
+            var reference = CreateReference();
+            var agentName = Regex.IsMatch(_message,"(CashIn)") ? GetSenderName() : "Missing";
+            var SenderName = Regex.Match(GetSenderName(), @"(?<=.*(?=[a-z]|[A-Z])).*").ToString();
 
             return new Payment()
             {
                 Amount = amount,
                 PhoneNumber = _phoneNumber,
-                FromAgent = fromAgent,
+                AgentName = agentName,
                 Reference = reference,
-                BankName = IPaymentService.GetBankNameFromString(BankName),
+                SenderName = SenderName,
+                BankName = IPaymentService.GetBankNameFromString(GetSenderName()),
                 ProviderName = Provider.Mpamba
             };
         }
 
         public bool HasInvalidReference()
         {
-            var reference = Regex.Match(_message,@"(?<=Ref:)(.*?)(?=((Bal)|(Avai)))").ToString().Trim();
-            return (reference.Length == 10);
+            return (CreateReference().Length != 10);
         }
 
         public bool IsDeposit()
         {
             return Regex.IsMatch(_message, @"((CashIn)|(Received)|(recieved)|(Deposit))");
+        }
+
+        private String CreateReference() {
+            return new Regex(@"(?<=Ref:)(.*?)(?=((Bal)|(Avai)))").Match(_message).ToString();
+        }
+
+        private String GetSenderName() {
+            return  Regex.Match(_message, @"(?<=from)(.*?)(?=on)").ToString();
         }
     }
 }

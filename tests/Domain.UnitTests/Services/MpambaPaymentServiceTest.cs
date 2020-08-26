@@ -53,13 +53,17 @@ namespace Domain.UnitTests.Services
             ";
 
             //When or Act
-            Payment payment = GetService(phoneNumber, textMessage).GeneratePayment();
+            MpambaService service = GetService(phoneNumber, textMessage);
+            Payment payment = service.GeneratePayment();
 
             //Then or Assert
             payment.Amount.Should().Be(5500);
             payment.Reference.Should().Be("7H948UWUV8");
-            payment.FromAgent.Should().BeTrue();
+            payment.AgentName.Should().Be("263509-RODGERSLETALA");
             payment.Amount.Should().BeOfType(typeof(Decimal));
+
+            service.IsDeposit().Should().Be(true);
+            service.HasInvalidReference().Should().Be(false);
         }
 
         [Fact]
@@ -78,7 +82,8 @@ namespace Domain.UnitTests.Services
 
             payment.Amount.Should().Be(6000);
             payment.Reference.Should().Be("6EQ63HN6KW");
-            payment.FromAgent.Should().BeFalse();
+            payment.AgentName.Should().Be("Missing");
+            payment.SenderName.Should().Be("firstnamelastname");
             payment.Amount.Should().BeOfType(typeof(Decimal));
         }
 
@@ -98,7 +103,7 @@ namespace Domain.UnitTests.Services
 
             payment.Amount.Should().Be(840);
             payment.Reference.Should().Be("7F257T6NHD");
-            payment.FromAgent.Should().BeFalse();
+            payment.AgentName.Should().Be("Missing");
             payment.Amount.Should().BeOfType(typeof(Decimal));
             payment.BankName.Should().Be(Bank.AirtelMoney);
         }
@@ -126,7 +131,7 @@ namespace Domain.UnitTests.Services
 
             payment.Amount.Should().Be(68750);
             payment.Reference.Should().Be("ER200605.1800.H19376");
-            payment.FromAgent.Should().Be(true);
+            payment.AgentName.Should().Be("Missing");
         }
         [Fact]
         public void PaymentService_ShouldGenerateAirtelMoneyPaymentFromUser()
@@ -139,6 +144,7 @@ namespace Domain.UnitTests.Services
 
             payment.Amount.Should().Be(3000);
             payment.Reference.Should().Be("PP200602.1133.H23975");
+            payment.SenderName.Should().Be("FIRSTNAMELASTNAME");
         }
         [Fact]
         public void PaymentService_ShouldGenerateAirtelMoneyPaymentFromBank()
@@ -162,26 +168,7 @@ namespace Domain.UnitTests.Services
 
             AirtelMoneyService service = new AirtelMoneyService(textMessage, phoneNumber);
 
-            service.HasInvalidReference().Should().Be(true);
-            service.IsDeposit().Should().Be(true);
-        }
-
-        [Fact]
-        public void PaymentService_ShouldBeValidTransactionMpamba()
-        {
-            var phoneNumber = "+265888123321";
-            var textMessage = @"
-                Cash In from 263509-RODGERS LETALA on
-                09/08/2020 09:43:32.
-                Amt: 5,500.00MWK
-                Fee: 0.00MWK
-                Ref: 7H948UWUV8
-                Bal: 5,557.96MWK
-            ";
-
-            MpambaService service = GetService(phoneNumber, textMessage);
-
-            service.HasInvalidReference().Should().Be(true);
+            service.HasInvalidReference().Should().Be(false);
             service.IsDeposit().Should().Be(true);
         }
     }

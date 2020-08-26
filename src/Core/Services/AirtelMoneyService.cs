@@ -8,7 +8,7 @@ namespace Core.Services
     {
         public readonly string _message;
         public readonly string _phoneNumber;
-        
+
         public AirtelMoneyService(string message, string phoneNumber)
         {
             _message = IPaymentService.SanitizeMessage(message);
@@ -17,33 +17,40 @@ namespace Core.Services
         public Payment GeneratePayment()
         {
             var amountRegex = new Regex(@"((?<=((receivedMK)|(recievedMK)))(.*?)(?=from))");
-            var referenceRegex = new Regex(@"(?<=(Id:)|(ID:))(.*?)(?=((\.De)|(Yo)))");
-            var bankNameRegex = new Regex(@"(?<=from)(.*?)(?=\.)");
-            var fromAgentRegex = new Regex("(Txn)");
-            var amount = Decimal.Parse(amountRegex.Match(_message).ToString().Trim());
-            var reference = referenceRegex.Match(_message).ToString();
-            var fromAgent = fromAgentRegex.IsMatch(_message);
-            var BankName = bankNameRegex.Match(_message).ToString();
+            var ger = amountRegex.Match(_message).ToString();
+            var amount = Decimal.Parse(amountRegex.Match(_message).ToString());
+            var reference = CreateRefrence();
+            var SenderName = Regex.Match(GetSenderName(), @"(?<=.*(?=[a-z]|[A-Z])).*").ToString();
 
             return new Payment()
             {
                 Amount = amount,
                 PhoneNumber = _phoneNumber,
-                FromAgent = fromAgent,
+                AgentName = "Missing",
                 Reference = reference,
-                BankName = IPaymentService.GetBankNameFromString(BankName),
+                SenderName = SenderName,
+                BankName = IPaymentService.GetBankNameFromString(GetSenderName()),
                 ProviderName = Provider.AirtelMoney
             };
         }
 
         public bool HasInvalidReference()
         {
-            return Regex.IsMatch(_message,@"[(A-Z)|(A-Z)|(0-9)]{8}.[0-9]{4}.[(A-Z)|(A-Z)|(0-9)]{6}");
+            return !Regex.IsMatch(_message, @"[(A-Z)|(A-Z)|(0-9)]{8}.[0-9]{4}.[(A-Z)|(A-Z)|(0-9)]{6}");
         }
 
         public bool IsDeposit()
         {
             return Regex.IsMatch(_message, @"((recieved)|(received))");
+        }
+
+        private String CreateRefrence()
+        {
+            return Regex.Match(_message, @"(?<=(Id:)|(ID:))(.*?)(?=((\.De)|(Yo)))").ToString().Trim();
+        }
+
+        private String GetSenderName() {
+            return Regex.Match(_message,@"(?<=from)(.*?)(?=\.)").ToString();
         }
     }
 }

@@ -1,0 +1,11 @@
+//Mpamba
+
+//Airtel Money
+
+Trans.ID:PP200602.1133.H23975.Dearcustomer,youhavereceivedMK3000.00from990000000,FIRSTNAMELASTNAME.YouravailablebalanceisMK4022.69.
+Trans.ID:BW200602.1151.D34302YouhavereceivedMK5000.00fromBankAccount.Youravailablebalanceis9022.69MK.
+Trans.ID:BW200605.1418.D64966YouhavereceivedMK8000.00fromBankAccount.Youravailablebalanceis8282.69MK.
+TxnId:ER200605.1800.H19376.DearCustomer,youhaverecievedMK68750.00from.YouravailablebalanceisMK68852.69.
+Trans.ID:BW200619.1546.D05832YouhavereceivedMK1000.00fromBankAccount.Youravailablebalanceis1552.69MK.
+TxnId:ER200716.1915.D00039.DearCustomer,youhaverecievedMK68750.00from.YouravailablebalanceisMK68762.69.
+Trans.ID:PP200809.2108.D29610.Dearcustomer,youhavereceivedMK10000.00from990000000,FIRSTNAMELASTNAME.YouravailablebalanceisMK12625.18.
