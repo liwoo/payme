@@ -17,27 +17,13 @@ namespace Api.Controllers
     [ApiController]
     public class SmsController : ControllerBase
     {
-        private readonly ILogger logger;
-        private readonly IMediator mediator;
+        private readonly ILogger _logger;
+        private readonly IMediator _mediator;
+
         public SmsController(ILogger<SmsController> logger, IMediator mediator)
         {
-            this.logger = logger;
-            this.mediator = mediator;
-        }
-
-        // GET api/sms
-        [HttpGet("")]
-        public ActionResult<IEnumerable<SMS>> GetSMSs()
-        {
-            return new List<SMS>
-            {
-                new SMS()
-                    {
-                        Id = 1,
-                        Phone = "0888123456",
-                        Message = "Some Message"
-                    }
-            };
+            _logger = logger;
+            _mediator = mediator;
         }
 
         // GET api/sms/5
@@ -51,7 +37,7 @@ namespace Api.Controllers
         [HttpPost("")]
         async public Task<string> PostSMS(SMSBodyDto body)
         {
-            return await this.mediator.Send(new ProcessSMS(body));
+            return await _mediator.Send(new ProcessSMS(body));
         }
 
     }

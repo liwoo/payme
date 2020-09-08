@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Infrastructure;
 
 namespace Api
 {
@@ -19,6 +20,7 @@ namespace Api
         {
             services.AddApplication();
             services.AddControllers();
+            services.AddInfrastructure();
             services.AddMediatR(typeof(Startup));
         }
 

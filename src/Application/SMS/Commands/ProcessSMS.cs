@@ -27,6 +27,7 @@ namespace Application.SMS.Commands
         public Task<string> Handle(ProcessSMS request, CancellationToken cancellationToken)
         {
             // TODO: Save SMS to DB
+
             _mediator.Publish(new SMSReceived(new SMSContents
             {
                 Phone = request.smsBody.Phone,
