@@ -120,43 +120,5 @@ namespace Domain.UnitTests.Services
 
             payment.BankName.Should().Be(Bank.Standard);
         }
-        [Fact]
-        public void PaymentService_ShouldGenerateAirtelMoneyPaymentFromUser()
-        {
-            var phoneNumber = "+265999123321";
-            var textMessage = "Trans.ID :  PP200602.1133.H23975. Dear customer, you have received MK 3000.00 from 990000000,FIRSTNAME LASTNAME . Your available balance is MK 4022.69.";
-
-            AirtelMoneyService service = new AirtelMoneyService(textMessage, phoneNumber);
-            Payment payment = service.GeneratePayment();
-
-            payment.Amount.Should().Be(3000);
-            payment.Reference.Should().Be("PP200602.1133.H23975");
-            payment.SenderName.Should().Be("FIRSTNAMELASTNAME");
-        }
-        [Fact]
-        public void PaymentService_ShouldGenerateAirtelMoneyPaymentFromBank()
-        {
-            var phoneNumber = "+265888123321";
-            var textMessage = "Trans. ID: BW200602.1151.D34302 You have received MK 5000.00 from Bank Account. Your available balance is 9022.69MK.";
-
-            AirtelMoneyService service = new AirtelMoneyService(textMessage, phoneNumber);
-            Payment payment = service.GeneratePayment();
-
-            payment.Amount.Should().Be(5000);
-            payment.Reference.Should().Be("BW200602.1151.D34302");
-            payment.BankName.Should().Be(Bank.None);
-        }
-
-        [Fact]
-        public void PaymentService_ShouldBeValidTransactionAirtel()
-        {
-            var phoneNumber = "+265888123321";
-            var textMessage = "Trans. ID: BW200602.1151.D34302 You have received MK 5000.00 from Bank Account. Your available balance is 9022.69MK.";
-
-            AirtelMoneyService service = new AirtelMoneyService(textMessage, phoneNumber);
-
-            service.HasInvalidReference().Should().Be(false);
-            service.IsDeposit().Should().Be(true);
-        }
     }
 }

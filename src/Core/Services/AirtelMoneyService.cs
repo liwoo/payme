@@ -26,7 +26,7 @@ namespace Core.Services
             {
                 Amount = amount,
                 PhoneNumber = _phoneNumber,
-                AgentName = "None",
+                AgentName = "Missing",
                 Reference = reference,
                 SenderName = SenderName,
                 BankName = IPaymentService.GetBankNameFromString(GetSenderName()),
@@ -36,12 +36,12 @@ namespace Core.Services
 
         public bool HasInvalidReference()
         {
-            return !Regex.IsMatch(_message, @"[(A-Z)|(A-Z)|(0-9)]{8}.[0-9]{4}.[(A-Z)|(A-Z)|(0-9)]{6}");
+            return !Regex.IsMatch(_message, "[(A-Z)|(A-Z)|(0-9)]{8}.[0-9]{4}.[(A-Z)|(A-Z)|(0-9)]{6}");
         }
 
         public bool IsDeposit()
         {
-            return Regex.IsMatch(_message, @"((recieved)|(received))");
+            return Regex.IsMatch(_message, "((recieved)|(received))");
         }
 
         public string CreateReference()

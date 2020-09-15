@@ -1,3 +1,5 @@
+using System;
+using System.Text.RegularExpressions;
 using Core.Entities;
 using Text;
 
@@ -13,6 +15,8 @@ namespace Core.Services
 
         static string SanitizeMessage(string message)
         {
+            var result = Regex.Replace(message, @"(?<=((from)(.*?)(,)))(.*?)(?=\.)", "\\");
+            Console.WriteLine(result.ToString()); 
             return TextUtils.RemoveInPlaceCharArray(message);
         }
         
