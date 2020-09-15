@@ -6,8 +6,8 @@ namespace Core.Services
 {
     public class AirtelMoneyService : IPaymentService
     {
-        public readonly string _message;
-        public readonly string _phoneNumber;
+        private readonly string _message;
+        private readonly string _phoneNumber;
 
         public AirtelMoneyService(string message, string phoneNumber)
         {
@@ -19,14 +19,14 @@ namespace Core.Services
             var amountRegex = new Regex(@"((?<=((receivedMK)|(recievedMK)))(.*?)(?=from))");
             var ger = amountRegex.Match(_message).ToString();
             var amount = Decimal.Parse(amountRegex.Match(_message).ToString());
-            var reference = CreateRefrence();
+            var reference = CreateReference();
             var SenderName = Regex.Match(GetSenderName(), @"(?<=.*(?=[a-z]|[A-Z])).*").ToString();
 
             return new Payment()
             {
                 Amount = amount,
                 PhoneNumber = _phoneNumber,
-                AgentName = "Missing",
+                AgentName = "None",
                 Reference = reference,
                 SenderName = SenderName,
                 BankName = IPaymentService.GetBankNameFromString(GetSenderName()),
@@ -44,7 +44,7 @@ namespace Core.Services
             return Regex.IsMatch(_message, @"((recieved)|(received))");
         }
 
-        private String CreateRefrence()
+        public string CreateReference()
         {
             return Regex.Match(_message, @"(?<=(Id:)|(ID:))(.*?)(?=((\.De)|(Yo)))").ToString().Trim();
         }

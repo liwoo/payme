@@ -45,7 +45,7 @@ namespace Core.Services
             return Regex.IsMatch(_message, @"((CashIn)|(Received)|(recieved)|(Deposit))");
         }
 
-        private String CreateReference() {
+        public string CreateReference() {
             return new Regex(@"(?<=Ref:)(.*?)(?=((Bal)|(Avai)))").Match(_message).ToString();
         }
 

@@ -9,11 +9,13 @@ namespace Core.Services
         bool HasInvalidReference();
         Payment GeneratePayment();
 
+        string CreateReference(); 
+
         static string SanitizeMessage(string message)
         {
-            //TODO: sanitize message here
             return TextUtils.RemoveInPlaceCharArray(message);
         }
+        
 
         static Bank GetBankNameFromString(string bankName)
         {
