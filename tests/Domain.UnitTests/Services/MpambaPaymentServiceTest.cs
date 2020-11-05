@@ -31,13 +31,11 @@ namespace Domain.UnitTests.Services
                 Bal: 5,557.96MWK
             ";
 
-            //TODO: Make this test pass
-            //TODO: Sanization Logic is in the IPaymentService interface`
-            // var sanitizedMessage = @"CashInfrom263509-RODGERSLETALAon09/08/2020 09:43:32.Amt:5,500.00MWKFee0.00MWKRef:7H948UWUV8Bal:5,557.96MWK";
+            var sanitizedMessage = "CashInfrom263509-RODGERSLETALAon09/08/202009:43:32.Amt:5,500.00MWKFee:0.00MWKRef:7H948UWUV8Bal:5,557.96MWK";
 
             //When or Act
             MpambaService mpambaService = GetService(phoneNumber, textMessage);
-            // mpambaService._message.Should().Be(sanitizedMessage);
+            mpambaService._message.Should().Be(sanitizedMessage);
         }
 
         [Fact]
@@ -55,13 +53,17 @@ namespace Domain.UnitTests.Services
             ";
 
             //When or Act
-            Payment payment = GetService(phoneNumber, textMessage).GeneratePayment();
+            MpambaService service = GetService(phoneNumber, textMessage);
+            Payment payment = service.GeneratePayment();
 
             //Then or Assert
             payment.Amount.Should().Be(5500);
             payment.Reference.Should().Be("7H948UWUV8");
-            payment.FromAgent.Should().BeTrue();
+            payment.AgentName.Should().Be("263509-RODGERSLETALA");
             payment.Amount.Should().BeOfType(typeof(Decimal));
+
+            service.IsDeposit().Should().Be(true);
+            service.HasInvalidReference().Should().Be(false);
         }
 
         [Fact]
@@ -80,7 +82,8 @@ namespace Domain.UnitTests.Services
 
             payment.Amount.Should().Be(6000);
             payment.Reference.Should().Be("6EQ63HN6KW");
-            payment.FromAgent.Should().BeFalse();
+            payment.AgentName.Should().Be("Missing");
+            payment.SenderName.Should().Be("firstnamelastname");
             payment.Amount.Should().BeOfType(typeof(Decimal));
         }
 
@@ -100,10 +103,9 @@ namespace Domain.UnitTests.Services
 
             payment.Amount.Should().Be(840);
             payment.Reference.Should().Be("7F257T6NHD");
-            payment.FromAgent.Should().BeFalse();
+            payment.AgentName.Should().Be("Missing");
             payment.Amount.Should().BeOfType(typeof(Decimal));
-            //TODO: payment.BankName.Should().Be(Bank.AirtelMoney);
-            //TODO: make that test pass
+            payment.BankName.Should().Be(Bank.AirtelMoney);
         }
 
         [Fact]

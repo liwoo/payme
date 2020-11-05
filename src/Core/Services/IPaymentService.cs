@@ -1,4 +1,7 @@
+using System;
+using System.Text.RegularExpressions;
 using Core.Entities;
+using Text;
 
 namespace Core.Services
 {
@@ -8,18 +11,21 @@ namespace Core.Services
         bool HasInvalidReference();
         Payment GeneratePayment();
 
+        string CreateReference(); 
+
         static string SanitizeMessage(string message)
         {
-            //TODO: sanitize message here
-            return message;
+            return TextUtils.RemoveInPlaceCharArray(message);
         }
+        
 
         static Bank GetBankNameFromString(string bankName)
         {
             return bankName switch
             {
-                "STANDARD BANK" => Bank.Standard,
-                "AIRTEL MONEY" => Bank.AirtelMoney,
+                "STANDARDBANK" => Bank.Standard,
+                "AIRTELMONEY" => Bank.AirtelMoney,
+                "BankAccount" => Bank.Missing,
                 _ => Bank.None
             };
         }
