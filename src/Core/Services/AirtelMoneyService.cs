@@ -29,8 +29,8 @@ namespace Core.Services
                 AgentName = "Missing",
                 Reference = reference,
                 SenderName = SenderName,
-                BankName = IPaymentService.GetBankNameFromString(GetSenderName()),
-                ProviderName = Provider.AirtelMoney
+                BankName = IPaymentService.GetBankNameFromString(GetSenderName()).ToString(),
+                ProviderName = Provider.AirtelMoney.ToString()
             };
         }
 

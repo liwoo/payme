@@ -2,8 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Application.SMS.Commands;
-using Application.SMS.DTOs;
+using Application.SMSs.Commands;
+using Application.SMSs.DTOs;
 using Core.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -35,7 +35,8 @@ namespace Api.Controllers
 
         // POST api/sms
         [HttpPost("")]
-        async public Task<string> PostSMS(SMSBodyDto body)
+        [Consumes("application/x-www-form-urlencoded")]
+        async public Task<string> PostSMS([FromForm] SMSBodyDto body)
         {
             return await _mediator.Send(new ProcessSMS(body));
         }

@@ -1,6 +1,6 @@
 using System.ComponentModel.Design;
 using Application.Common.Events;
-using Application.SMS.Commands;
+using Application.SMSs.Commands;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 

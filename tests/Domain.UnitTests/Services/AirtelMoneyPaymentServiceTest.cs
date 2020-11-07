@@ -56,7 +56,7 @@ namespace Domain.UnitTests.Services
 
             payment.Amount.Should().Be(5000);
             payment.Reference.Should().Be("BW200602.1151.D34302");
-            payment.BankName.Should().Be(Bank.Missing);
+            payment.BankName.Should().Be(Bank.Missing.ToString());
         }
 
         [Fact]

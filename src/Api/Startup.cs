@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Application.SMS.Commands;
+using Application.SMSs.Commands;
 using MediatR;
 using Application;
 using Microsoft.AspNetCore.Builder;
@@ -19,7 +19,7 @@ namespace Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddApplication();
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson();
             services.AddInfrastructure();
             services.AddMediatR(typeof(Startup));
         }

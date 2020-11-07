@@ -1,3 +1,4 @@
+using Application.Common.Interfaces;
 using Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -9,9 +10,10 @@ namespace Infrastructure
         public static IServiceCollection AddInfrastructure(this IServiceCollection services)
         {
             services.AddDbContext<PayMeContext>(options =>
-                    options.UseSqlite("Data Source=payme.db",
-                    b => b.MigrationsAssembly(typeof(PayMeContext).Assembly.FullName))
+                    options.UseNpgsql("enter your postgress conn screen")
             );
+
+            services.AddScoped<IApplicationDbContext>(provider => provider.GetService<PayMeContext>());
 
             return services;
         }

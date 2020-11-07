@@ -1,0 +1,10 @@
+# GET http://localhost:5000
+# GET http://localhost:5000/api/sms
+POST https://pay.jeremiahchienda.com/api/sms
+Content-Type: application/x-www-form-urlencoded
+
+text="Cash In from 130143-WAZA MHONE on 31/10/2020 15:40:22.
+    Amt: 30,000.00MWKFee: 0.00MWK
+    Ref: 7JV0AALYQE
+    Bal: 30,668.33MWK"
+&phone=+265888332890

@@ -5,7 +5,7 @@ namespace Core.Services
     {
         public Provider GetProviderName(string phoneNumber)
         {
-            throw new NotImplementedException();
+            return Provider.Mpamba;
         }
 
         public IPaymentService ServiceFromProviderFactory(Provider provider, String phone, String message)

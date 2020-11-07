@@ -105,7 +105,7 @@ namespace Domain.UnitTests.Services
             payment.Reference.Should().Be("7F257T6NHD");
             payment.AgentName.Should().Be("Missing");
             payment.Amount.Should().BeOfType(typeof(Decimal));
-            payment.BankName.Should().Be(Bank.AirtelMoney);
+            payment.BankName.Should().Be(Bank.AirtelMoney.ToString());
         }
 
         [Fact]
@@ -118,7 +118,7 @@ namespace Domain.UnitTests.Services
 
             Payment payment = GetService(phoneNumber, textMessage).GeneratePayment();
 
-            payment.BankName.Should().Be(Bank.Standard);
+            payment.BankName.Should().Be(Bank.Standard.ToString());
         }
     }
 }

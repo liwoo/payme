@@ -1,19 +1,26 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Application.Common.Events;
+using Application.Common.Interfaces;
 using Core.Exceptions;
 using Core.Services;
 using MediatR;
+using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 
 namespace Application.Payments.Commands
 {
     public class ProcessPaymentHandler : INotificationHandler<SMSReceived>
     {
         private readonly ProviderService _providerService;
+        private readonly IApplicationDbContext _context;
+        private readonly ILogger _logger;
 
-        public ProcessPaymentHandler()
+        public ProcessPaymentHandler(ILogger<ProcessPaymentHandler> logger, IApplicationDbContext context)
         {
             _providerService = new ProviderService();
+            _context = context;
+            _logger = logger;
         }
 
         public Task Handle(SMSReceived notification, CancellationToken cancellationToken)
@@ -39,15 +46,20 @@ namespace Application.Payments.Commands
                     //discard current one, i.e. do nothing
                     //email manager to reconcile manually
                     //save!
+                    var paymentJson = JsonConvert.SerializeObject(payment);
+                    _context.Payments.AddAsync(payment);
+                    _context.SaveChangesAsync(cancellationToken);
+                    _logger.LogInformation($"Payment Saved: {paymentJson}");
+
                 }
 
                 return Task.FromCanceled(cancellationToken);
 
+
             }
             catch (UnprocessablePayment e)
             {
-                //log this as an exception
-                //email manager
+                _logger.LogError("Could not save payment", e);
                 return Task.FromException(e);
             }
         }
