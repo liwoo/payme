@@ -12,7 +12,7 @@ namespace Core.Services
         public AirtelMoneyService(string message, string phoneNumber)
         {
             _message = IPaymentService.SanitizeMessage(message);
-            _phoneNumber = phoneNumber;
+            _phoneNumber = IPaymentService.SanitizePhoneNumber(phoneNumber);
         }
         public Payment GeneratePayment()
         {

@@ -31,6 +31,7 @@ namespace Domain.UnitTests.Services
             payment.Amount.Should().Be(68750);
             payment.Reference.Should().Be("ER200605.1800.H19376");
             payment.AgentName.Should().Be("Missing");
+            payment.PhoneNumber.Should().Be("265999123321");
         }
         [Fact]
         public void PaymentService_ShouldGenerateAirtelMoneyPaymentFromUser()

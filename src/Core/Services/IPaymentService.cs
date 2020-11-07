@@ -17,6 +17,10 @@ namespace Core.Services
         {
             return TextUtils.RemoveInPlaceCharArray(message);
         }
+
+        static string SanitizePhoneNumber(string number) {
+            return number.Replace("+", string.Empty);
+        }
         
 
         static Bank GetBankNameFromString(string bankName)

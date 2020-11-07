@@ -36,6 +36,7 @@ namespace Domain.UnitTests.Services
             //When or Act
             MpambaService mpambaService = GetService(phoneNumber, textMessage);
             mpambaService._message.Should().Be(sanitizedMessage);
+            mpambaService._phoneNumber.Should().Be("265888123321");
         }
 
         [Fact]

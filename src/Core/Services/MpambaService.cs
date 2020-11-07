@@ -12,7 +12,7 @@ namespace Core.Services
         public MpambaService(string message, string phoneNumber)
         {
             _message = IPaymentService.SanitizeMessage(message);
-            _phoneNumber = phoneNumber;
+            _phoneNumber = IPaymentService.SanitizePhoneNumber(phoneNumber);
         }
 
         public Payment GeneratePayment()
@@ -26,7 +26,7 @@ namespace Core.Services
             return new Payment()
             {
                 Amount = amount,
-                PhoneNumber = _phoneNumber,
+                PhoneNumber =  _phoneNumber,
                 AgentName = agentName,
                 Reference = reference,
                 SenderName = SenderName,
