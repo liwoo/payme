@@ -40,7 +40,7 @@ namespace Application.SMSs.Commands
             var sms = new SMS()
             {
                 Phone = request.smsBody.Phone,
-                Message = request.smsBody.Text
+                Message = request.smsBody.Text.Replace("\"", string.Empty)
             };
 
             var smsJson = JsonConvert.SerializeObject(sms);
