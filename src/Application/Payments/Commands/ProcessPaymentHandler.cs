@@ -10,7 +10,7 @@ using Newtonsoft.Json;
 
 namespace Application.Payments.Commands
 {
-    public class ProcessPaymentHandler : INotificationHandler<SMSReceived>
+    public class ProcessPaymentHandler : IRequestHandler<SMSReceived, string>
     {
         private readonly ProviderService _providerService;
         private readonly IApplicationDbContext _context;
@@ -23,7 +23,7 @@ namespace Application.Payments.Commands
             _logger = logger;
         }
 
-        public async Task Handle(SMSReceived notification, CancellationToken cancellationToken)
+        public async Task<string> Handle(SMSReceived notification, CancellationToken cancellationToken)
         {
             _logger.LogInformation("Saving stuff");
             try
@@ -32,7 +32,7 @@ namespace Application.Payments.Commands
 
                 if (provider == Provider.None)
                 {
-                    return; //Task.FromCanceled(cancellationToken);
+                    return "This provider does not exist"; //Task.FromCanceled(cancellationToken);
                 }
 
                 IPaymentService service = _providerService.ServiceFromProviderFactory(provider, notification.sms.Phone, notification.sms.Contents);
@@ -48,19 +48,19 @@ namespace Application.Payments.Commands
                     //email manager to reconcile manually
                     //save!
                     var paymentJson = JsonConvert.SerializeObject(payment);
-                    // _context.Payments.Add(payment);
-                    // await _context.SaveChangesAsync(cancellationToken);
-                    // _logger.LogInformation($"Payment Saved: {paymentJson}");
+                    _context.Payments.Add(payment);
+                    await _context.SaveChangesAsync(cancellationToken);
+                    _logger.LogInformation($"Payment Saved: {paymentJson}");
                 }
 
-                return;// Task.FromCanceled(cancellationToken);
+                return "Payment Saved";// Task.FromCanceled(cancellationToken);
 
 
             }
             catch (UnprocessablePayment e)
             {
                 _logger.LogError("Could not save payment", e);
-                return;// Task.FromException(e);
+                return "Could not save payment";// Task.FromException(e);
             }
         }
     }

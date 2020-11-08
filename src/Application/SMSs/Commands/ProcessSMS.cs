@@ -53,13 +53,11 @@ namespace Application.SMSs.Commands
             _logger.LogInformation($"Successfully saved SMS");
 
 
-            await _mediator.Publish(new SMSReceived(new SMSContents
+           return await _mediator.Send(new SMSReceived(new SMSContents
             {
                 Phone = request.smsBody.Phone,
                 Contents = request.smsBody.Text
             }));
-
-            return "SMS Received Successfully";
         }
     }
 }

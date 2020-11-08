@@ -7,7 +7,7 @@ using MediatR;
 
 namespace Application.Common.Events
 {
-    public class SMSReceived : INotification
+    public class SMSReceived : IRequest<string>
     {
         public readonly SMSContents sms;
         public SMSReceived(SMSContents sms)
