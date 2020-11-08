@@ -4,5 +4,9 @@ namespace Application.Common.Models
     {
         public string Phone { get; set; }
         public string Contents { get; set; }
+
+        static string SanitezeContent(string contents) {
+            return contents;
+        }
     }
 }
