@@ -35,7 +35,7 @@ namespace Application.SMSs.Commands
             _logger = logger;
         }
 
-        public Task<string> Handle(ProcessSMS request, CancellationToken cancellationToken)
+        public async Task<string> Handle(ProcessSMS request, CancellationToken cancellationToken)
         {
             var sms = new SMS()
             {
@@ -49,17 +49,17 @@ namespace Application.SMSs.Commands
 
             _context.SMSs.Add(sms);
 
-            _context.SaveChangesAsync(cancellationToken);
+            await _context.SaveChangesAsync(cancellationToken);
             _logger.LogInformation($"Successfully saved SMS");
 
 
-            _mediator.Publish(new SMSReceived(new SMSContents
+            await _mediator.Publish(new SMSReceived(new SMSContents
             {
                 Phone = request.smsBody.Phone,
                 Contents = request.smsBody.Text
             }));
 
-            return Task.FromResult("SMS Received Successfully");
+            return "SMS Received Successfully";
         }
     }
 }

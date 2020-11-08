@@ -23,15 +23,16 @@ namespace Application.Payments.Commands
             _logger = logger;
         }
 
-        public Task Handle(SMSReceived notification, CancellationToken cancellationToken)
+        public async Task Handle(SMSReceived notification, CancellationToken cancellationToken)
         {
+            _logger.LogInformation("Saving stuff");
             try
             {
                 Provider provider = _providerService.GetProviderName(notification.sms.Phone);
 
                 if (provider == Provider.None)
                 {
-                    return Task.FromCanceled(cancellationToken);
+                    return; //Task.FromCanceled(cancellationToken);
                 }
 
                 IPaymentService service = _providerService.ServiceFromProviderFactory(provider, notification.sms.Phone, notification.sms.Contents);
@@ -47,20 +48,19 @@ namespace Application.Payments.Commands
                     //email manager to reconcile manually
                     //save!
                     var paymentJson = JsonConvert.SerializeObject(payment);
-                    _context.Payments.AddAsync(payment);
-                    _context.SaveChangesAsync(cancellationToken);
-                    _logger.LogInformation($"Payment Saved: {paymentJson}");
-
+                    // _context.Payments.Add(payment);
+                    // await _context.SaveChangesAsync(cancellationToken);
+                    // _logger.LogInformation($"Payment Saved: {paymentJson}");
                 }
 
-                return Task.FromCanceled(cancellationToken);
+                return;// Task.FromCanceled(cancellationToken);
 
 
             }
             catch (UnprocessablePayment e)
             {
                 _logger.LogError("Could not save payment", e);
-                return Task.FromException(e);
+                return;// Task.FromException(e);
             }
         }
     }
