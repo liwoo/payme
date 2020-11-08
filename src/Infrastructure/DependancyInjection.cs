@@ -10,7 +10,7 @@ namespace Infrastructure
         public static IServiceCollection AddInfrastructure(this IServiceCollection services)
         {
             services.AddDbContext<PayMeContext>(options =>
-                    options.UseNpgsql("enter your postgress conn screen")
+                    options.UseNpgsql("Enter Conn String Here")
             );
 
             services.AddScoped<IApplicationDbContext>(provider => provider.GetService<PayMeContext>());

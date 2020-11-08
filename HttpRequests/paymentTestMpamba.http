@@ -1,6 +1,6 @@
 # GET http://localhost:5000
 # GET http://localhost:5000/api/sms
-POST https://pay.jeremiahchienda.com/api/sms
+POST http://localhost:3001/api/sms
 Content-Type: application/x-www-form-urlencoded
 
 text="Cash In from 130143-WAZA MHONE on 31/10/2020 15:40:22.

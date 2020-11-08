@@ -15,26 +15,4 @@ namespace Application.Common.Events
             this.sms = sms;
         }
     }
-
-    public class SMSReceivedHandler : INotificationHandler<SMSReceived>
-    {
-        private readonly ILogger logger;
-        public SMSReceivedHandler(ILogger<SMSReceivedHandler> logger)
-        {
-            this.logger = logger;
-        }
-        public Task Handle(SMSReceived notification, CancellationToken cancellationToken)
-        {
-            // TODO: Return Payment Object from MpambaService(sms)
-            // try {
-            // Payment payement = paymentService.GenerateFromMpamba(notification.sms)
-            //                    || paymentService.GenerateFromAirtelMoney(notication.sms)
-            // _context.savePayment(payment)
-            // } catch {
-            //  this.log.Information("SMS not Processable with either Mpamba or AM")
-            //}
-            // TODO: Return Payment Object from AirtelService(sms)
-            return Task.CompletedTask;
-        }
-    }
 }
