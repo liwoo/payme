@@ -1,5 +1,7 @@
 # GET http://localhost:5000
 # GET http://localhost:5000/api/sms
+
+# tnm
 POST http://localhost:3001/api/sms
 Content-Type: application/x-www-form-urlencoded
 
@@ -8,3 +10,27 @@ text="Cash In from 130143-WAZA MHONE on 31/10/2020 15:40:22.
     Ref: 7JV0AALYQE
     Bal: 30,668.33MWK"
 &phone=+265888332890
+
+### airtel
+
+POST http://localhost:3001/api/sms
+Content-Type: application/x-www-form-urlencoded
+
+text="Trans.ID:PP200602.1133.H23975.Dearcustomer,youhavereceivedMK3000.00from990000000,FIRSTNAMELASTNAME.YouravailablebalanceisMK4022.69."
+&phone=+265998332890
+
+### not deposit (airtel)
+
+POST http://localhost:3001/api/sms
+Content-Type: application/x-www-form-urlencoded
+
+text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum voluptate esse, mollitia magni iusto ea commodi, corporis vitae"
+&phone=+265998332890
+
+### Validation tests
+
+POST http://localhost:3001/api/sms
+Content-Type: application/x-www-form-urlencoded
+
+text="Ca"
+&phone=+26
